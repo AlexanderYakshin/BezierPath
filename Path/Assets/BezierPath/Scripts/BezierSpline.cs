@@ -20,6 +20,11 @@ namespace BezierPath
 
 		private bool _loop;
 
+		public float[] CurveLengths
+		{
+			get { return _curveLength; }
+		}
+
 		public bool Loop
 		{
 			get

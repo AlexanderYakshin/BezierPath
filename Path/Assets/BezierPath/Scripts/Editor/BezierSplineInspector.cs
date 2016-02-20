@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace BezierPath.Editor
 {
+	[CanEditMultipleObjects]
 	[CustomEditor(typeof(BezierSpline))]
 	public class BezierSplineInspector : UnityEditor.Editor
 	{

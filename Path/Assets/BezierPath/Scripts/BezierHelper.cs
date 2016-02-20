@@ -44,20 +44,15 @@ namespace BezierPath
 
 		public static float GetCurveLength(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
 		{
-			int inc = 10;
+			int inc = 20;
 			float length = 0f;
-			for (int i = 0; i < inc; i++)
+			var prevPoint = p0;
+			for (int i = 1; i < inc; i++)
 			{
 				float t = i / (float)inc;
-				var t1 = 1f - t;
-				var t1_3 = t1 * t1 * t1;
-				var t1_3a = (3 * t) * (t1 * t1);
-				var t1_3b = (3 * (t * t) * t1);
-				var t1_3c = t * t * t;
-
-				Vector2 pt = new Vector2();
-				pt = (t1_3 * p0) + (t1_3a * p1) + (t1_3b * p2) + (t1_3c * p3);
-				length += pt.magnitude;
+				var point = GetPoint(p0, p1, p2, p3, t);
+				length += (point - prevPoint).magnitude;
+				prevPoint = point;
 			}
 
 			return length;
